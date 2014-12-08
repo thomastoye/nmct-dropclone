@@ -79,6 +79,19 @@ namespace nmct.ssa.dropbox.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string Address { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string Zipcode { get; set; }
+        public string TwitterName { get; set; }
+
     }
 
     public class ResetPasswordViewModel
