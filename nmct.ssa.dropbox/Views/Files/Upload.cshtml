@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Selecteer een bestand</h2>
+
+@using (Html.BeginForm("Upload", "Files", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h3>Omschrijving voor bestand:</h3>
+
+    <textarea name="description"></textarea>
+    
+    <h3>Bestand:</h3>
+    <input type="file" name="file"/>
+    
+    <h3>Wie mag dit bestand downloaden?</h3>
+    <select name="wie" multiple>
+        @foreach(nmct.ssa.dropbox.Models.ApplicationUser u in ViewBag.Users) {
+            <option value="@u.UserName">@u.FirstName @u.Name</option>
+        }
+    </select>
+    
+    <button type="submit">Opladen</button>
+}
+
