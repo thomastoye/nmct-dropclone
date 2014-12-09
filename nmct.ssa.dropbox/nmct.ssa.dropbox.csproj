@@ -248,6 +248,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Files\Upload.cshtml" />
     <Content Include="Views\Files\Index.cshtml" />
+    <Content Include="Views\Files\ConfirmDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

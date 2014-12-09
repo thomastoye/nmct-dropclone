@@ -1,0 +1,30 @@
+﻿@using nmct.ssa.dropbox.Models;
+@{
+    ViewBag.Title = "ConfirmDelete";
+    FileRegistration file = ViewBag.FileRegistration;
+}
+
+<h2>Echt verwijderen?</h2>
+<p>Je staat op het punt om het volgende bestand te verwijderen.</p>
+
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>Naam</th>
+        <th>Omschrijving</th>
+        <th>Opgeladen op</th>
+        <th>Gebruikersnaam</th>
+    </tr>
+    <tr>
+        <td>@file.FileId</td>
+        <td>@file.FileName</td>
+        <td>@file.Description</td>
+        <td>@file.UploadTime</td>
+        <td>@file.UserName</td>
+    </tr>
+</table>
+
+
+<a class="btn btn-primary" href="/Files/Delete/@file.FileId">Verwijderen</a>
+
+<a class="btn" href="/Files">Annuleren</a>

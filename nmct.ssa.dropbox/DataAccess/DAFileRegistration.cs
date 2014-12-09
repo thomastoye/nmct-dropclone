@@ -89,5 +89,13 @@ namespace nmct.ssa.dropbox.DataAccess
             reader.Close();
             return file;
         }
+
+        public static void DeleteFile(int id)
+        {
+            string sql = "DELETE FROM FileRegistration WHERE FileId=@Id; DELETE FROM FileUser WHERE FileId=@Id";
+            DbParameter par = Database.AddParameter(CONNECTIONSTRING, "@Id", id);
+
+            Database.ModifyData(CONNECTIONSTRING, sql, par);
+        }
     }
 }
