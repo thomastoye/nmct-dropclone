@@ -1,4 +1,5 @@
-﻿using nmct.ssa.dropbox.Models;
+﻿using nmct.ssa.dropbox.DataAccess;
+using nmct.ssa.dropbox.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +34,7 @@ namespace nmct.ssa.dropbox.Controllers
                 var filename = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/app_data/uploads"), filename);
                 file.SaveAs(path);
+                int id = DAFileRegistration.SaveFileRegistration(filename, description, User.Identity.Name);
             }
             return RedirectToAction("Index");
 
