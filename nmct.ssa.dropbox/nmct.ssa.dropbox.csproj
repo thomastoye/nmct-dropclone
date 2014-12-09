@@ -169,9 +169,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExternalUsersController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataAccess\DAExternalUser.cs" />
     <Compile Include="DataAccess\DAFileLogging.cs" />
     <Compile Include="DataAccess\DAFileRegistration.cs" />
     <Compile Include="DataAccess\Database.cs" />
@@ -252,6 +254,9 @@
     <Content Include="Views\Files\Index.cshtml" />
     <Content Include="Views\Files\ConfirmDelete.cshtml" />
     <Content Include="Views\Files\Logs.cshtml" />
+    <Content Include="Views\ExternalUsers\Create.cshtml" />
+    <Content Include="Views\ExternalUsers\List.cshtml" />
+    <Content Include="Views\ExternalUsers\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +272,12 @@
     <EmbeddedResource Include="Migrations\201412081920086_InitDatabase.resx">
       <DependentUpon>201412081920086_InitDatabase.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nmct.ssa.dropbox.common\nmct.ssa.dropbox.common.csproj">
+      <Project>{44f38bc4-55ce-470e-9a93-8df76fc820e9}</Project>
+      <Name>nmct.ssa.dropbox.common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
