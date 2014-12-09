@@ -34,7 +34,10 @@ namespace nmct.ssa.dropbox.Controllers
                 var filename = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/app_data/uploads"), filename);
                 file.SaveAs(path);
-                int id = DAFileRegistration.SaveFileRegistration(filename, description, User.Identity.Name);
+                int fileId = DAFileRegistration.SaveFileRegistration(filename, description, User.Identity.Name);
+
+                foreach(string user in wie)
+                    DAFileRegistration.SaveDownloaders(user, fileId);
             }
             return RedirectToAction("Index");
 

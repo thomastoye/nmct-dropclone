@@ -20,5 +20,14 @@ namespace nmct.ssa.dropbox.DataAccess
 
             return Database.InsertData(CONNECTIONSTRING, sql, parDesc, parFileName, parTime, parName);
         }
+
+        public static int SaveDownloaders(string user, int fileId)
+        {
+            string sql = "INSERT INTO FileUser VALUES(@FileId, @UserName)";
+            DbParameter parId = Database.AddParameter(CONNECTIONSTRING, "@FileId", fileId);
+            DbParameter parUser = Database.AddParameter(CONNECTIONSTRING, "@UserName", user);
+
+            return Database.InsertData(CONNECTIONSTRING, sql, parId, parUser);
+        }
     }
 }
