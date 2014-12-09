@@ -57,6 +57,7 @@ namespace nmct.ssa.dropbox.Controllers
 
             string path = Server.MapPath("~/app_data/uploads/");
             path += reg.FileName;
+            DAFileLogging.SaveLog(id, User.Identity.Name);
             return File(System.IO.File.ReadAllBytes(path), System.Net.Mime.MediaTypeNames.Application.Octet, reg.FileName);
         }
 
@@ -95,6 +96,14 @@ namespace nmct.ssa.dropbox.Controllers
             DAFileRegistration.DeleteFile(id);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Authorize(Roles="Administrator")]
+        public ActionResult Logs()
+        {
+            ViewBag.Logs = DAFileLogging.GetLogs();
+            return View();
         }
     }
 }

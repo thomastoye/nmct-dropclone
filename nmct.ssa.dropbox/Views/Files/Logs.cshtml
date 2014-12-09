@@ -1,0 +1,24 @@
+﻿@using nmct.ssa.dropbox.Models;
+@{
+    ViewBag.Title = "Logs";
+}
+
+<h2>Logs</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Gedownload door</th>
+        <th>Gedownload op</th>
+        <th>Bestandsid</th>
+    </tr>
+    @foreach (FileLog f in ViewBag.Logs)
+    {
+        <tr>
+            <td>@f.Id</td>
+            <td>@f.DownloadBy</td>
+            <td>@f.TimeDownloaded</td>
+            <td>@f.FileId</td>
+        </tr>
+    }
+</table>

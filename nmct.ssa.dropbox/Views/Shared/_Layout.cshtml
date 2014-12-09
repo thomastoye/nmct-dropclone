@@ -23,6 +23,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Files", "Index", "Files")</li>
                     <li>@Html.ActionLink("Upload", "Upload", "Files")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Logs", "Logs", "Files")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
