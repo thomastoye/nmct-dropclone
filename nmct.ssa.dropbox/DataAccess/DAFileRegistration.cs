@@ -57,5 +57,21 @@ namespace nmct.ssa.dropbox.DataAccess
                 UserName = record["UserName"].ToString()
             };
         }
+
+        public static List<FileRegistration> BestandenMetToegangVoor(string userName)
+        {
+            string sql = "SELECT FileRegistration.FileId, FileRegistration.UserName, FileRegistration.Description, FileRegistration.FileName, FileRegistration.UploadTime  FROM FileRegistration, FileUser WHERE FileRegistration.FileId = FileUser.FileId AND FileUser.UserName = @UserName";
+            DbParameter par = Database.AddParameter(CONNECTIONSTRING, "@UserName", userName);
+
+            List<FileRegistration> list = new List<FileRegistration>();
+
+            DbDataReader reader = Database.GetData(CONNECTIONSTRING, sql, par);
+            while (reader.Read())
+                list.Add(CreateFileRegistration(reader));
+
+            reader.Close();
+            return list;
+
+        }
     }
 }

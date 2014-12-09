@@ -10,12 +10,13 @@
 <h3>Mijn bestanden</h3>
 
 <table class="table table-striped">
-    <thead>
+    <tr>
         <th>#</th>
         <th>Naam</th>
         <th>Omschrijving</th>
         <th>Opgeladen op</th>
-    </thead>
+        <th>Acties</th>
+    </tr>
     @foreach (FileRegistration f in ViewBag.MijnBestanden)
     {
         <tr>
@@ -23,6 +24,34 @@
             <td>@f.FileName</td>
             <td>@f.Description</td>
             <td>@f.UploadTime</td>
+            <td>
+                <a href="#">Downloaden</a> | <a href="#">Verwijderen</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<h3>Bestanden met mij gedeeld</h3>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Naam</th>
+        <th>Omschrijving</th>
+        <th>Opgeladen op</th>
+        <th>Opgeladen door</th>
+        <th>Acties</th>
+    </tr>
+    @foreach (FileRegistration f in ViewBag.ToegangBestanden)
+    {
+        <tr>
+            <td>@f.FileId</td>
+            <td>@f.FileName</td>
+            <td>@f.Description</td>
+            <td>@f.UploadTime</td>
+            <td>
+                <a href="#">Downloaden</a> | <a href="#">Verwijderen</a>
+            </td>
         </tr>
     }
 </table>
