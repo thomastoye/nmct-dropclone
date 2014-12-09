@@ -24,7 +24,6 @@
     </tr>
 </table>
 
+@Html.ActionLink("Verwijder", "Delete", "Files", new { id = @file.FileId }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Annuleer", "Index", "Files", new { @class = "btn btn-default" })
 
-<a class="btn btn-primary" href="/Files/Delete/@file.FileId">Verwijderen</a>
-
-<a class="btn" href="/Files">Annuleren</a>

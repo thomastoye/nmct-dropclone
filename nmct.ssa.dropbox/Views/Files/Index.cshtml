@@ -7,7 +7,7 @@
 
 @if(ViewBag.IsAdmin) { <p>Je bent ingelogd als administrator.</p> }
 
-<a href="/Files/Upload">Nieuw bestand opladen</a>
+@Html.ActionLink("Nieuw bestand opladen", "Upload", "Files")
 
 <h3>Mijn bestanden</h3>
 
@@ -27,7 +27,8 @@
             <td>@f.Description</td>
             <td>@f.UploadTime</td>
             <td>
-                <a href="/Files/Download/@f.FileId">Downloaden</a> | <a href="/Files/ConfirmDelete/@f.FileId">Verwijderen</a>
+                @Html.ActionLink("Downloaden", "Download", "Files", new { id = f.FileId }, null) | 
+                @Html.ActionLink("Verwijderen", "ConfirmDelete", "Files", new { id = f.FileId }, null)
             </td>
         </tr>
     }
@@ -53,7 +54,8 @@
             <td>@f.UploadTime</td>
             <td>@f.UserName</td>
             <td>
-                <a href="/Files/Download/@f.FileId">Downloaden</a> | <a href="/Files/ConfirmDelete/@f.FileId">Verwijderen</a>
+                @Html.ActionLink("Downloaden", "Download", "Files", new { id = f.FileId }, null) | 
+                @Html.ActionLink("Verwijderen", "ConfirmDelete", "Files", new { id = f.FileId }, null)
             </td>
         </tr>
     }
