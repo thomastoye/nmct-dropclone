@@ -73,5 +73,21 @@ namespace nmct.ssa.dropbox.DataAccess
             return list;
 
         }
+
+        public static FileRegistration GetFileRegistrationById(int id) {
+            FileRegistration file;
+
+            string sql = "SELECT * FROM FileRegistration WHERE FileId=@Id";
+            DbParameter par = Database.AddParameter(CONNECTIONSTRING, "@Id", id);
+
+            DbDataReader reader = Database.GetData(CONNECTIONSTRING, sql, par);
+            if(reader.Read())
+                file = CreateFileRegistration(reader);
+            else
+                file = null;
+
+            reader.Close();
+            return file;
+        }
     }
 }

@@ -25,7 +25,7 @@
             <td>@f.Description</td>
             <td>@f.UploadTime</td>
             <td>
-                <a href="#">Downloaden</a> | <a href="#">Verwijderen</a>
+                <a href="/Files/Download/@f.FileId">Downloaden</a> | <a href="#">Verwijderen</a>
             </td>
         </tr>
     }
@@ -49,8 +49,9 @@
             <td>@f.FileName</td>
             <td>@f.Description</td>
             <td>@f.UploadTime</td>
+            <td>@f.UserName</td>
             <td>
-                <a href="#">Downloaden</a> | <a href="#">Verwijderen</a>
+                <a href="/Files/Download/@f.FileId">Downloaden</a> | <a href="#">Verwijderen</a>
             </td>
         </tr>
     }

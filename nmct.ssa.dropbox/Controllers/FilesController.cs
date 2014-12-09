@@ -44,5 +44,14 @@ namespace nmct.ssa.dropbox.Controllers
             return RedirectToAction("Index");
 
         }
+
+        [HttpGet]
+        public FileResult Download(int id)
+        {
+            FileRegistration reg = DAFileRegistration.GetFileRegistrationById(id);
+            string path = Server.MapPath("~/app_data/uploads/");
+            path += reg.FileName;
+            return File(System.IO.File.ReadAllBytes(path), System.Net.Mime.MediaTypeNames.Application.Octet, reg.FileName);
+        }
     }
 }
