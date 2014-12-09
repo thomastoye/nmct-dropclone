@@ -4,7 +4,7 @@
 *.suo
 *.user
 *.userosscache
-*.<sln></sln>.docstates
+*.sln.docstates
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
