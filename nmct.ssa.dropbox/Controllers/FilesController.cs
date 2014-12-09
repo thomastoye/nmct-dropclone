@@ -15,8 +15,10 @@ namespace nmct.ssa.dropbox.Controllers
         // GET: Files
         public ActionResult Index()
         {
+            bool isAdmin = User.IsInRole("Administrator");
+            ViewBag.IsAdmin = isAdmin;
             ViewBag.MijnBestanden = DAFileRegistration.BestandenVanUser(User.Identity.Name);
-            ViewBag.ToegangBestanden = DAFileRegistration.BestandenMetToegangVoor(User.Identity.Name);
+            ViewBag.ToegangBestanden = DAFileRegistration.BestandenMetToegangVoor(User.Identity.Name, isAdmin);
             return View();
         }
 
@@ -46,38 +48,44 @@ namespace nmct.ssa.dropbox.Controllers
         }
 
         [HttpGet]
-        public FileResult Download(int id)
+        public ActionResult Download(int id)
         {
             FileRegistration reg = DAFileRegistration.GetFileRegistrationById(id);
+
+            if (!User.IsInRole("Administrator") && User.Identity.Name != reg.UserName)
+                return new HttpUnauthorizedResult();
+
             string path = Server.MapPath("~/app_data/uploads/");
             path += reg.FileName;
             return File(System.IO.File.ReadAllBytes(path), System.Net.Mime.MediaTypeNames.Application.Octet, reg.FileName);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult ConfirmDelete(int id)
         {
             FileRegistration reg = DAFileRegistration.GetFileRegistrationById(id);
             if (reg == null) // not found
-                return RedirectToAction("Index");
+                return new HttpNotFoundResult();
 
             if (reg.UserName != User.Identity.Name) // not his own file, so can't delete it
-                return RedirectToAction("Index");
+                return new HttpUnauthorizedResult();
 
             ViewBag.FileRegistration = reg;
             return View();
 
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Delete(int id)
         {
             FileRegistration reg = DAFileRegistration.GetFileRegistrationById(id);
             if (reg == null) // not found
-                return RedirectToAction("Index");
+                return new HttpNotFoundResult();
 
             if (reg.UserName != User.Identity.Name) // not his own file, so can't delete it
-                return RedirectToAction("Index");
+                return new HttpUnauthorizedResult();
 
             string path = Server.MapPath("~/app_data/uploads/");
             path += reg.FileName;

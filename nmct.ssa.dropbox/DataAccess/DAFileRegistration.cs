@@ -58,9 +58,18 @@ namespace nmct.ssa.dropbox.DataAccess
             };
         }
 
-        public static List<FileRegistration> BestandenMetToegangVoor(string userName)
+        public static List<FileRegistration> BestandenMetToegangVoor(string userName, bool isAdmin = false)
         {
-            string sql = "SELECT FileRegistration.FileId, FileRegistration.UserName, FileRegistration.Description, FileRegistration.FileName, FileRegistration.UploadTime  FROM FileRegistration, FileUser WHERE FileRegistration.FileId = FileUser.FileId AND FileUser.UserName = @UserName";
+            string sql;
+
+            if (isAdmin)
+            {
+                sql = "SELECT * FROM FileRegistration";
+            }
+            else
+            {
+                sql = "SELECT FileRegistration.FileId, FileRegistration.UserName, FileRegistration.Description, FileRegistration.FileName, FileRegistration.UploadTime  FROM FileRegistration, FileUser WHERE FileRegistration.FileId = FileUser.FileId AND FileUser.UserName = @UserName";
+            }
             DbParameter par = Database.AddParameter(CONNECTIONSTRING, "@UserName", userName);
 
             List<FileRegistration> list = new List<FileRegistration>();
