@@ -15,6 +15,7 @@ namespace nmct.ssa.dropbox.Controllers
         // GET: Files
         public ActionResult Index()
         {
+            ViewBag.MijnBestanden = DAFileRegistration.BestandenVanUser(User.Identity.Name);
             return View();
         }
 

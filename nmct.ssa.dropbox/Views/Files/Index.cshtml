@@ -1,0 +1,28 @@
+﻿@using nmct.ssa.dropbox.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<a href="/Files/Upload">Nieuw bestand opladen</a>
+
+<h3>Mijn bestanden</h3>
+
+<table class="table table-striped">
+    <thead>
+        <th>#</th>
+        <th>Naam</th>
+        <th>Omschrijving</th>
+        <th>Opgeladen op</th>
+    </thead>
+    @foreach (FileRegistration f in ViewBag.MijnBestanden)
+    {
+        <tr>
+            <td>@f.FileId</td>
+            <td>@f.FileName</td>
+            <td>@f.Description</td>
+            <td>@f.UploadTime</td>
+        </tr>
+    }
+</table>

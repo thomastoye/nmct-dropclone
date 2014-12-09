@@ -1,5 +1,7 @@
-﻿using System;
+﻿using nmct.ssa.dropbox.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Web;
@@ -28,6 +30,32 @@ namespace nmct.ssa.dropbox.DataAccess
             DbParameter parUser = Database.AddParameter(CONNECTIONSTRING, "@UserName", user);
 
             return Database.InsertData(CONNECTIONSTRING, sql, parId, parUser);
+        }
+
+        public static List<FileRegistration> BestandenVanUser(string userName)
+        {
+            string sql = "SELECT FileId, Description, FileName, UploadTime, UserName FROM FileRegistration WHERE UserName=@UserName";
+            DbParameter par = Database.AddParameter(CONNECTIONSTRING, "@UserName", userName);
+
+            List<FileRegistration> list = new List<FileRegistration>();
+            DbDataReader reader = Database.GetData(CONNECTIONSTRING, sql, par);
+            while (reader.Read())
+            {
+                list.Add(CreateFileRegistration(reader));
+            }
+            reader.Close();
+            return list;
+        }
+
+        private static FileRegistration CreateFileRegistration(IDataRecord record) {
+            return new FileRegistration
+            {
+                Description = record["Description"].ToString(),
+                FileId = Int32.Parse(record["FileId"].ToString()),
+                FileName = record["FileName"].ToString(),
+                UploadTime = DateTime.Parse(record["UploadTime"].ToString()),
+                UserName = record["UserName"].ToString()
+            };
         }
     }
 }
