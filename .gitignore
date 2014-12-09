@@ -4,7 +4,7 @@
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
+*.<sln></sln>.docstates
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -151,3 +151,6 @@ UpgradeLog*.htm
 *.bim_*.settings
 # Microsoft Fakes
 FakesAssemblies/
+
+# Ignore uploaded files
+nmct.ssa.dropbox/App_Data/uploads
