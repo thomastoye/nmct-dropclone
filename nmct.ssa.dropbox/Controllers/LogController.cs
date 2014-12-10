@@ -2,10 +2,11 @@
 using nmct.ssa.dropbox.DataAccess;
 using nmct.ssa.dropbox.Models;
 using System.Web.Http;
+using nmct.ssa.dropbox.common;
 
 namespace nmct.ssa.dropbox.Controllers
 {
-    [Authorize]
+    
     public class LogController : ApiController
     {
         public IEnumerable<FileLog> Get()

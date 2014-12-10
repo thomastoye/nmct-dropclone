@@ -187,7 +187,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\FileLog.cs" />
     <Compile Include="Models\FileRegistration.cs" />
     <Compile Include="Models\FileUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />

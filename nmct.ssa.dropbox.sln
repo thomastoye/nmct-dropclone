@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ssa.dropbox", "nmct.ss
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ssa.dropbox.common", "nmct.ssa.dropbox.common\nmct.ssa.dropbox.common.csproj", "{44F38BC4-55CE-470E-9A93-8DF76FC820E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nmct.ssa.dropbox.ui.viewlogs", "nmct.ssa.dropbox.ui.viewlogs\nmct.ssa.dropbox.ui.viewlogs.csproj", "{2BA36C53-15BD-4237-BF5E-34718924B6F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44F38BC4-55CE-470E-9A93-8DF76FC820E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44F38BC4-55CE-470E-9A93-8DF76FC820E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44F38BC4-55CE-470E-9A93-8DF76FC820E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA36C53-15BD-4237-BF5E-34718924B6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA36C53-15BD-4237-BF5E-34718924B6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA36C53-15BD-4237-BF5E-34718924B6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA36C53-15BD-4237-BF5E-34718924B6F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
