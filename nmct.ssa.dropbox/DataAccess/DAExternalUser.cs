@@ -79,5 +79,25 @@ namespace nmct.ssa.dropbox.DataAccess
 
             return Database.InsertData(CONNECTIONSTRING, sql, parUser, parPass, parBlocked);
         }
+
+        public static ExternalUser TryLogin(string userName, string password)
+        {
+            string sql = "SELECT * FROM ExternalUser WHERE UserName=@UserName AND Password=@Password";
+
+            DbParameter parUser = Database.AddParameter(CONNECTIONSTRING, "@UserName", userName);
+            DbParameter parPass = Database.AddParameter(CONNECTIONSTRING, "@Password", password);
+
+            DbDataReader reader = Database.GetData(CONNECTIONSTRING, sql, parUser, parPass);
+
+            ExternalUser res;
+
+            if (!reader.Read())
+                res = null;
+            else
+                res = Create(reader);
+
+            reader.Close();
+            return res;
+        }
     }
 }

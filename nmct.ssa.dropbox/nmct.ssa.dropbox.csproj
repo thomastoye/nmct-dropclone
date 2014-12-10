@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ExternalUsersController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataAccess\DAExternalUser.cs" />
     <Compile Include="DataAccess\DAFileLogging.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +262,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Api\" />
+    <Folder Include="Views\Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using nmct.ssa.dropbox.Models;
+using Microsoft.Owin.Security.OAuth;
+using nmct.ssa.dropbox.Providers;
 
 namespace nmct.ssa.dropbox
 {
@@ -14,6 +16,19 @@ namespace nmct.ssa.dropbox
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()
+                {
+                    AllowInsecureHttp = true,
+                    TokenEndpointPath = new PathString("/token"),
+                    AccessTokenExpireTimeSpan = TimeSpan.FromHours(8),
+                    Provider = new SimpleAuthorizationServerProvider()
+                }
+            );
+
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+            
+
+
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -44,25 +59,6 @@ namespace nmct.ssa.dropbox
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
-
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
-
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
         }
     }
 }
