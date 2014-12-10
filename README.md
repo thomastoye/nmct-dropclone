@@ -1,13 +1,16 @@
 # What's this?
 
-# Database setup
+A school project for my Server-Side Advanced class, where we learn to work with ASP.NET. It teaches working with ASP.NET MVC, Web APIs, ASP.NET Identity, OAuth, API calls, WPF integration with a Web API... No Entity Framework though, that's for next semester. It's used for one model and ASP.NET Identity in this project, but the other tables are created with plain SQL on the database, and talked to using ADO.NET.
+
+# Setup
 
 1. Edit the default ConnectionString in `web.config`
 2. Create a database called `ssa_dropbox`
 3. Open the project in Visual Studio and run `update-database` in the NuGet console. You might have to take some extra steps, not sure.
-4. Execute the following scripts on the database:
+4. The Web API project might run on a different port for you. Change 'URL' in `Webaccess.cs` in the WPF project to match it.
+5. Execute the following scripts on the database:
 
-```
+```SQL
 USE [ssa_dropbox]
 GO
 
