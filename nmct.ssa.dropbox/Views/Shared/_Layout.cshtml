@@ -26,6 +26,7 @@
                     @if (User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Logs", "Logs", "Files")</li>
+                        <li>@Html.ActionLink("Externe gebruikers", "List", "ExternalUsers")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
