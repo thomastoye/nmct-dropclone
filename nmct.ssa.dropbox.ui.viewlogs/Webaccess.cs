@@ -25,8 +25,8 @@ namespace nmct.ssa.dropbox.ui.viewlogs
         {
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await
-                client.GetAsync(URL + "api/log");
+                client.SetBearerToken(token);
+                HttpResponseMessage response = await client.GetAsync(URL + "api/log");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();

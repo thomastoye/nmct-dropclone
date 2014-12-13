@@ -9,6 +9,7 @@ namespace nmct.ssa.dropbox.Controllers
     
     public class LogController : ApiController
     {
+        [Authorize]
         public IEnumerable<FileLog> Get()
         {
             return DAFileLogging.GetLogs();

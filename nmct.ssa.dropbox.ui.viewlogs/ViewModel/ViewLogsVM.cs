@@ -79,7 +79,7 @@ namespace nmct.ssa.dropbox.ui.viewlogs.ViewModel
 
         public async void ReloadLogs()
         {
-            Logs = await Webaccess.GetLogs("token.AccessToken");
+            Logs = await Webaccess.GetLogs(Token.AccessToken);
         }
     }
 }
